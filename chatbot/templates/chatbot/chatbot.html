@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UrbanNest AI Assistant</title>
+    <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <h1>UrbanNest AI Assistant</h1>
+            <p>Modern Furniture. Custom Made for Your Space.</p>
+        </header>
+
+        <main class="chat-layout">
+            <section class="chat-card">
+                <div class="chat-header">
+                    <h2>Chat with us</h2>
+                    <p>Ask about furniture options, customization, delivery, pricing, or quote requests.</p>
+                </div>
+
+                <div class="chat-box" id="chat-box">
+                    <div class="bot-message">
+                        Hi, I’m the UrbanNest AI Assistant. I can help with furniture options, customization, delivery, pricing guidance, and quote requests. How can I help you today?
+                    </div>
+                </div>
+
+                <form class="chat-form" id="chat-form">
+                    <input type="text" id="message-input" placeholder="Type your question here...">
+                    <button type="submit">Send</button>
+                </form>
+
+                <p class="small-note">Try: I need a quote for a custom wardrobe</p>
+            </section>
+
+            <section class="lead-card">
+                <h2>Request a Quote</h2>
+                <p>If you are interested in custom furniture, share your details and our team can contact you.</p>
+
+                <form class="lead-form" id="lead-form">
+                    {% csrf_token %}
+
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Your name">
+
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Your email">
+
+                    <label>Phone</label>
+                    <input type="text" name="phone" placeholder="Your phone number">
+
+                    <label>Requirement</label>
+                    <input type="text" name="requirement" placeholder="Example: Custom sofa, wardrobe, dining table">
+
+                    <label>Message</label>
+                    <textarea name="message" placeholder="Share size, material, color, or other details"></textarea>
+
+                    <label>Preferred Contact Time</label>
+                    <input type="text" name="preferred_contact_time" placeholder="Example: Evening, after 5 PM">
+
+                    <button type="submit">Submit Lead</button>
+                </form>
+
+                <div id="lead-result" class="lead-result"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{% static 'chatbot/script.js' %}"></script>
+</body>
+</html>

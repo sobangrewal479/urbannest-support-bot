@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UrbanNest Leads</title>
+    <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <h1>UrbanNest Lead List</h1>
+            <p>Owner view for customer quote requests.</p>
+        </header>
+
+        <section class="lead-card full-width-card">
+            <div class="page-actions">
+                <a class="action-button" href="/">Back to Chatbot</a>
+            </div>
+
+            <h2>Captured Leads</h2>
+
+            {% if leads %}
+                <div class="table-wrapper">
+                    <table class="lead-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date/Time</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Requirement</th>
+                                <th>Message</th>
+                                <th>Preferred Time</th>
+                                <th>Status</th>
+                                <th>Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lead in leads %}
+                                <tr>
+                                    <td>{{ lead.id }}</td>
+                                    <td>{{ lead.created_at }}</td>
+                                    <td>{{ lead.name }}</td>
+                                    <td>{{ lead.email|default:"-" }}</td>
+                                    <td>{{ lead.phone|default:"-" }}</td>
+                                    <td>{{ lead.requirement }}</td>
+                                    <td>{{ lead.message }}</td>
+                                    <td>{{ lead.preferred_contact_time|default:"-" }}</td>
+                                    <td>
+                                        <span class="status-badge">{{ lead.status }}</span>
+                                    </td>
+                                    <td>{{ lead.source }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No leads have been captured yet.</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>
