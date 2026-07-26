@@ -8,6 +8,12 @@ The project includes a customer-facing AI-style support bot that answers common 
 
 This is a portfolio/MVP version. In a real client project, the lead view would normally be upgraded into a secure owner dashboard/admin portal with login protection.
 
+## Demo Video
+
+Watch the working project demonstration:
+
+[AI Website Support Bot with Lead Capture] https://youtu.be/DsSZat3IS9k
+
 ## Purpose
 
 The purpose of this project is to help a furniture business:
